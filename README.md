@@ -4,6 +4,10 @@ to get this repo working on your machine, follow these steps (depending on your 
 
 [//]: # (TODO)
 
+To setup environment using Windows, install WSL: https://learn.microsoft.com/en-us/windows/wsl/install
+
+Then install Node.js on WSL to prevent WSL from using the Window's install of Node.js: https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl
+
 # Contributing
 
 1. Find an issue to work on or that you are assigned
