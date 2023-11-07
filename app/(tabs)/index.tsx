@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 
 import IntroScreen from '../../components/IntroScreen';
 import { Text, View } from '../../components/Themed';
+import Login from "../../components/SignUp";
 
 export default function TabOneScreen() {
   return (
