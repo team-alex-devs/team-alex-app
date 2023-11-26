@@ -1,16 +1,22 @@
 import { StyleSheet } from 'react-native';
 
-import IntroScreen from '../../components/IntroScreen';
 import { Text, View } from '../../components/Themed';
-import ImageInput from '../../components/ImageInput';
 import SignUp from "../../components/SignUp";
+import ViewStyle from "../../components/ViewStyle";
 
 export default function TabTwoScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>team-alex-app</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+
+      <Text> SET USER (TEST)</Text>
       <SignUp/>
+
+      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+
+      <Text> GET STYLE (TEST)</Text>
+      <ViewStyle/>
     </View>
   );
 }

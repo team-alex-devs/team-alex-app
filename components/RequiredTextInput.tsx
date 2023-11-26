@@ -1,7 +1,7 @@
 import {Control, Controller} from "react-hook-form";
 import {TextInput} from "react-native";
 
-export function RequiredTextInput<T extends "name" | "phoneNum">({valueField, title, control}: {valueField: T, title: string, control: Control<any>}) {
+export function RequiredTextInput<T extends string>({valueField, title, control}: {valueField: T, title: string, control: Control<any>}) {
     return <Controller
         control={control}
         rules={{

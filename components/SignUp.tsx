@@ -1,11 +1,11 @@
 import { Text, View, Button } from "react-native"
 import {useForm} from "react-hook-form"
-import { collection, addDoc } from "firebase/firestore";
-import {db} from "../firebaseConfig";
 import {RequiredTextInput} from "./RequiredTextInput";
-import {SignUpData} from "../constants/Types";
+import {emptyUser, User} from "../constants/Types";
+import {setUser} from "../dao/User";
+import {useState} from "react";
 
-const initialData: SignUpData = {name: "", phoneNum: ""};
+const initialData: User = {name: "", phoneNumber: "", password: "", styles: []};
 
 export default function SignUp() {
     const {
@@ -15,28 +15,22 @@ export default function SignUp() {
     } = useForm({
         defaultValues: initialData
     })
-    const onSubmit = async (data: SignUpData) => {
-        try {
-            const docRef = await addDoc(collection(db, "users"), {
-                name: data.name,
-                phoneNum: data.phoneNum
-            });
-            console.log("Document written with ID: ", docRef.id);
-        } catch (e) {
-            console.error("Error adding document: ", e);
-        }
+
+    const [usr, setUsr] = useState(emptyUser)
+    const onSubmit = async (data: User) => {
+        setUser(data)
+            .then(() => setUsr(data as User))
+            .catch((e) => console.log("User write *not* successful:\n", e));
     }
 
-    return (
-        <View>
+    return <View>
             <RequiredTextInput valueField={"name"} title={"Name"} control={control}/>
             {errors.name && <Text>A username is required.</Text>}
 
-            <RequiredTextInput valueField={"phoneNum"} title={"Phone Number"} control={control}/>
-            {errors.phoneNum && <Text>Your phone-number is required.</Text>}
+            <RequiredTextInput valueField={"phoneNumber"} title={"Phone Number"} control={control}/>
+            {errors.phoneNumber && <Text>Your phone-number is required.</Text>}
 
             <Button title="Submit" onPress={handleSubmit(onSubmit)} />
-        </View>
-    )
-
+            <Text>User written with {usr.name} and {usr.phoneNumber}</Text>
+    </View>
 }
