@@ -3,6 +3,8 @@
  * Change these types as needed -- but ensure that nothing breaks when you do
  */
 
+import * as url from "url";
+
 /**
  * User data
  */
@@ -32,4 +34,8 @@ export type Style = {
 }
 export function emptyStyle(): Style {
     return {articleType: "", baseColour: "", gender: "", masterCategory: "", productDisplayName: "", season: "", subcategory: "", usage: "", year: NaN}
+}
+
+export type Image = {
+    link: string
 }
